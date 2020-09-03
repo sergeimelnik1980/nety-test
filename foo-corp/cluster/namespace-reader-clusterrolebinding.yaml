@@ -9,6 +9,9 @@ subjects:
 - kind: User
   name: test123@foo-corp.com
   apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: test12345@foo-corp.com
+  apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
   name: namespace-reader
