@@ -40,7 +40,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/booming-being-283214/my-image']
 - name: 'gcr.io/cloud-builders/kubectl'
-  args: ['set', 'image', 'deployment/	my-deployment-68bdbf6f49', 'my-image-1=gcr.io/booming-being-283214/my-image']
+  args: ['set', 'image', 'deployment/my-deployment-68bdbf6f49', 'my-image-1=gcr.io/booming-being-283214/my-image']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
   - 'CLOUDSDK_CONTAINER_CLUSTER=sync'
