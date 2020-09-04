@@ -1,4 +1,4 @@
-###test images
+#test images
 FROM node:10.13.0
 
 WORKDIR /home/nety-test
