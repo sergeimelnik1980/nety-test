@@ -1,3 +1,4 @@
+ 
 steps:
 # Generate the kubeconfig file needed to authenticate to the GKE cluster. The root user generates this file with restricted permissions.
 - name: 'gcr.io/cloud-builders/kubectl'
@@ -33,3 +34,13 @@ steps:
 # Validate input configs against any OPA ConstraintTemplates and Constraints it finds in its input.
 - name: 'gcr.io/config-management-release/policy-controller-validate'
   args: ['--input', '/workspace/config-source.yaml']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/booming-being-283214/my-image', '.']
+  timeout: 500s
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/booming-being-283214/my-image']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['set', 'image', 'deployment/my-deployment', 'my-container=gcr.io/booming-being-283214/my-image']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=sync'
