@@ -5,8 +5,8 @@ metadata:
 spec:
   match:
     kinds:
-      - apiGroups: [""]
-        kinds: ["Namespace"]
+      - apiGroups: ["*"]
+        kinds: ["shipping-prod"]
   parameters:
     message: "All namespaces must have a `cost-center` label that points to your division"
     labels:
